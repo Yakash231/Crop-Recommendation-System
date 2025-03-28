@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Prediction Results</h2>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Predicted Crop</th>
+                <th>Accuracy</th>
+            </tr>
+            {% for model, result in predictions.items() %}
+            <tr>
+                <td>{{ model }}</td>
+                <td>{{ result.crop }}</td>
+                <td>{{ (result.accuracy * 100)|round(2) }}%</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="/">Go Back</a>
+    </div>
+</body>
+</html>
